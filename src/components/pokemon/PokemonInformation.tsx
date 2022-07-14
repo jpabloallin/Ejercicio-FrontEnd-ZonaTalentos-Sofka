@@ -14,7 +14,7 @@ interface IPokemonProps {
     type: IPokemonTypeProps[];
   }
 
-const PokemonInformation : React.FC<{name: string}> = ({name}) => {
+const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
 
     const [pokemon, setPokemon] = React.useState({} as IPokemonProps);
 
@@ -60,7 +60,7 @@ const PokemonInformation : React.FC<{name: string}> = ({name}) => {
             )}
         </Card.Body>
         <Card.Body>
-            <Card.Link href="#">Pokemon information</Card.Link>
+            <Card.Link href={`pokemon/${name}`}>Pokemon information</Card.Link>
         </Card.Body>
     </>
 }
