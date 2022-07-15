@@ -2,7 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Footer from "../components/footer/Footer";
 import NavBar from "../components/navbar/NavBar";
 import Main from "../pages/main/Main";
-import SingularPokemon from "../pages/main/pokemon/SingularPokemon";
+import SingularPokemon from "../pages/pokemon/SingularPokemon";
 
 interface IProps {
 }

@@ -60,9 +60,9 @@ const Main : React.FC = () => {
             <br />
                 <Row xm={1} md={5} className="g-4">
                     {pokemon.map((pokemon) => (
-                        <Col>
+                        <Col key={pokemon.name}>
                             <Card border="dark" style={{ width: '13rem' }}>
-                                <PokemonInformation  name = {pokemon.name} />
+                                <PokemonInformation name={pokemon.name} />
                             </Card>
                         </Col>
                     ))}

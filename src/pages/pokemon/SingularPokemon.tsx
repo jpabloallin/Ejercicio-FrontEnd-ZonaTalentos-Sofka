@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import apiUrl from "../../../features/global/apiUrl";
-import emojiPokemonType from '../../../assets/types';
+import apiUrl from "../../features/global/apiUrl";
+import emojiPokemonType from '../../assets/types';
 import { Card, ListGroup } from "react-bootstrap";
 import { FaChevronLeft } from 'react-icons/fa';
 

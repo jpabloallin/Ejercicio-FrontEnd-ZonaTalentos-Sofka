@@ -45,7 +45,7 @@ const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
             )}
             <Card.Title>{name}</Card.Title>
             {pokemon.type && (
-                <Card.Text className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
                     {
                         pokemon.type.map(pokemonType => 
                             <div key={pokemonType.name} >
@@ -56,7 +56,7 @@ const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
                             </div>
                         )
                     }
-                </Card.Text>
+                </div>
             )}
         </Card.Body>
         <Card.Body>
