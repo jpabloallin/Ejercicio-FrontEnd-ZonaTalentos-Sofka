@@ -67,6 +67,7 @@ const Main : React.FC = () => {
                         </Col>
                     ))}
                 </Row>
+                <br />
         </Container>
     </>
 }
