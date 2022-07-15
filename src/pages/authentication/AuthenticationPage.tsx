@@ -1,4 +1,3 @@
-import GoogleLogIn from "../../components/authentication/GoogleLogin";
 import LogIn from "../../components/authentication/LogIn";
 import SignIn from "../../components/authentication/SingIn";
 

@@ -2,7 +2,7 @@ import * as React from "react"
 import apiUrl from "../../features/global/apiUrl";
 import emojiPokemonType from '../../assets/types';
 import { Card } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -30,6 +30,7 @@ const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
 
     const [pokemon, setPokemon] = React.useState({} as IPokemonProps);
 
+    // axios peticion to pokeapi to get each pokemon by its name
     React.useEffect(() => {
         apiUrl.get(`/pokemon/${name}`)
         .then(res => {

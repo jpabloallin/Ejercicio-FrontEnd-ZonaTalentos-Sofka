@@ -38,6 +38,7 @@ const SingularPokemon: React.FC = () => {
 
     const [pokemon, setPokemon] = useState({} as IPokemonProps);
 
+    //Send pokémon name as a parameter and shows its a singular page with all its information.
     useEffect(() => {
         apiUrl.get(`/pokemon/${name}`)
         .then(res => {

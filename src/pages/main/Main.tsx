@@ -1,12 +1,11 @@
-import axios from "axios";
 import * as React from "react"
 import apiUrl from "../../features/global/apiUrl"
 import {POKEMON_BY_PAGE} from "../../features/global/pokemonNumber"
 import {NUMBER_MAX_POKEMONS} from "../../features/global/pokemonNumber"
 import Card from 'react-bootstrap/Card';
 import PokemonInformation from "../../components/pokemon/PokemonInformation";
-import { Link, useNavigate } from "react-router-dom";
-import { CardGroup, Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
 import { FaSearch } from 'react-icons/fa';
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
@@ -30,6 +29,7 @@ const Main : React.FC = () => {
     const [ pokemon, setPokemon ] = React.useState<IPokemonProps[]>([])
     const [pokemonSearch, setPokemonSearch] = React.useState('');
 
+    //Search pokémon with a limitation of 600 
     const handleSearchPokemon = React.useCallback(async () => {
         const response = await apiUrl.get(`/pokemon?limit=${NUMBER_MAX_POKEMONS}`);
     
@@ -40,6 +40,7 @@ const Main : React.FC = () => {
         setPokemon(pokemonsSearch);
       }, [pokemonSearch]);
 
+      //Displays 50 pokémon by default
     const pokemonList = React.useCallback(async () => {
         const res = await apiUrl.get('/pokemon', {
             params: {
@@ -49,6 +50,7 @@ const Main : React.FC = () => {
         setPokemon(res.data.results);
     },[]);
 
+    //Starts searching when you write 2 letters or more in the input section
     React.useEffect(() => {
         const isSearch = pokemonSearch.length >= 2;
 
