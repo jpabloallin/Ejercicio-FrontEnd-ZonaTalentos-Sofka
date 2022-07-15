@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import apiUrl from "../../features/global/apiUrl";
 import emojiPokemonType from '../../assets/types';
 import { Card, ListGroup } from "react-bootstrap";
 import { FaChevronLeft } from 'react-icons/fa';
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 export interface IPokemonTypeProps {
     name: string;
@@ -20,6 +22,17 @@ export interface IPokemonProps {
 }
 
 const SingularPokemon: React.FC = () => {
+
+    const{user} = useSelector((state:RootState) => state.logged)
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        if (user === null) {
+          navigate("/login");
+        }
+      }, []);
+
+    console.log(user)
 
     const { name } = useParams();
 
@@ -89,7 +102,7 @@ const SingularPokemon: React.FC = () => {
                 </ListGroup>
             </Card.Body>
             <Card.Body>
-                <Card.Link href="/"><FaChevronLeft size={30} /></Card.Link>
+                <Link to="/"><FaChevronLeft size={30} /></Link>
             </Card.Body>
         </Card>
     </div>

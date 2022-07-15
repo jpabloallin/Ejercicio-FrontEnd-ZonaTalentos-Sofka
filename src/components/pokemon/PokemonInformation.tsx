@@ -2,6 +2,9 @@ import * as React from "react"
 import apiUrl from "../../features/global/apiUrl";
 import emojiPokemonType from '../../assets/types';
 import { Card } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { Link, useNavigate } from "react-router-dom";
 
 interface IPokemonTypeProps {
     name: string;
@@ -15,6 +18,15 @@ interface IPokemonProps {
 }
 
 const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
+
+    const{user} = useSelector((state:RootState) => state.logged)
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        if (user === null) {
+          navigate("/login");
+        }
+      }, []);
 
     const [pokemon, setPokemon] = React.useState({} as IPokemonProps);
 
@@ -60,7 +72,7 @@ const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
             )}
         </Card.Body>
         <Card.Body>
-            <Card.Link href={`pokemon/${name}`} className="link-dark btn btn-danger btn-sm active p-2">Pokémon Data</Card.Link>
+            <Link to={`pokemon/${name}`} className="link-dark btn btn-danger btn-sm active p-2">Pokémon Data</Link>
         </Card.Body>
     </>
 }

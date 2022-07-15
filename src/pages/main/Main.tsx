@@ -5,9 +5,11 @@ import {POKEMON_BY_PAGE} from "../../features/global/pokemonNumber"
 import {NUMBER_MAX_POKEMONS} from "../../features/global/pokemonNumber"
 import Card from 'react-bootstrap/Card';
 import PokemonInformation from "../../components/pokemon/PokemonInformation";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CardGroup, Col, Container, Row } from "react-bootstrap";
 import { FaSearch } from 'react-icons/fa';
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 interface IPokemonProps {
     id: string;
@@ -15,6 +17,15 @@ interface IPokemonProps {
 }
 
 const Main : React.FC = () => {
+    
+    const{user} = useSelector((state:RootState) => state.logged)
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        if (user === null) {
+          navigate("/login");
+        }
+      }, []);
 
     const [ pokemon, setPokemon ] = React.useState<IPokemonProps[]>([])
     const [pokemonSearch, setPokemonSearch] = React.useState('');
