@@ -12,7 +12,7 @@ interface IPokemonProps {
     id: string;
     image: string;
     type: IPokemonTypeProps[];
-  }
+}
 
 const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
 
@@ -38,11 +38,11 @@ const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
     }, [name])
 
     return <>
-        {pokemon.image && (
-        <Card.Img variant="top" src={pokemon.image} alt={`Image of pokémon ${name}`}/>
-        )}
         <Card.Body>
             <Card.Title>#{pokemon.id}</Card.Title>
+            {pokemon.image && (
+                <Card.Img variant="top" src={pokemon.image} alt={`Image of pokémon ${name}`}/>
+            )}
             <Card.Title>{name}</Card.Title>
             {pokemon.type && (
                 <Card.Text className="d-flex justify-content-center">
@@ -60,7 +60,7 @@ const PokemonInformation : React.FC<{ name: string }> = ({ name }) => {
             )}
         </Card.Body>
         <Card.Body>
-            <Card.Link href={`pokemon/${name}`}>Pokemon information</Card.Link>
+            <Card.Link href={`pokemon/${name}`} className="link-dark btn btn-danger btn-sm active p-2">Pokémon Data</Card.Link>
         </Card.Body>
     </>
 }

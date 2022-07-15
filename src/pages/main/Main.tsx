@@ -23,7 +23,6 @@ const Main : React.FC = () => {
         const response = await apiUrl.get(`/pokemon?limit=${NUMBER_MAX_POKEMONS}`);
     
         setPokemonSearch(pokemonSearch.toLocaleLowerCase());
-        // Valida nomes dos pokémons constam no valor da variável pokemonSearch
         const pokemonsSearch = response.data.results.filter(
           ({ name }: IPokemonProps) => name.includes(pokemonSearch),
         );
@@ -62,7 +61,7 @@ const Main : React.FC = () => {
                 <Row xm={1} md={5} className="g-4">
                     {pokemon.map((pokemon) => (
                         <Col>
-                            <Card style={{ width: '13rem' }}>
+                            <Card border="dark" style={{ width: '13rem' }}>
                                 <PokemonInformation  name = {pokemon.name} />
                             </Card>
                         </Col>
